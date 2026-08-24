@@ -111,7 +111,7 @@ public/
 record** — the chapter cannot change it directly. It points here via:
 
 ```
-unyc.ksea.org.  CNAME  <github-org>.github.io.
+unyc.ksea.org.  CNAME  unyksea.github.io.
 ```
 
 If the site ever needs to move hosts, that record change has to be requested from the
