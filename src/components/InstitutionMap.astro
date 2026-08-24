@@ -1,0 +1,97 @@
+---
+import { mapInstitutions, nyOutline } from "../data/site";
+
+/* The SVG viewBox and the HTML overlay share one coordinate space: every
+   position is a percentage of the map box, so chips and leader lines stay
+   aligned at any width. */
+const VB = { w: 1000, h: 797 };
+const px = (p: number) => (p / 100) * VB.w;
+const py = (p: number) => (p / 100) * VB.h;
+---
+
+<div class="relative mx-auto w-full max-w-4xl">
+  <div class="relative" style="aspect-ratio: 1000 / 797;">
+    <svg
+      viewBox={nyOutline.viewBox}
+      class="absolute inset-0 h-full w-full"
+      role="img"
+      aria-label="Map of New York State showing the eight institutions with KSEA Upstate NY chapter members"
+    >
+      <path d={nyOutline.path} fill="#eef3fb" stroke="#adc5ea" stroke-width="3" stroke-linejoin="round" />
+
+      {/* Leader lines: chip back to the campus's true location */}
+      {
+        mapInstitutions.map((i) => (
+          <line
+            x1={px(i.x)}
+            y1={py(i.y)}
+            x2={px(i.cx)}
+            y2={py(i.cy)}
+            stroke="#7ba0da"
+            stroke-width="2"
+            stroke-dasharray="5 5"
+          />
+        ))
+      }
+
+      {/* True campus locations */}
+      {
+        mapInstitutions.map((i) => (
+          <>
+            <circle cx={px(i.x)} cy={py(i.y)} r="9" fill="#c46f31" opacity="0.25" />
+            <circle cx={px(i.x)} cy={py(i.y)} r="4.5" fill="#c46f31" />
+          </>
+        ))
+      }
+    </svg>
+
+    {/* Logo chips, positioned over the map */}
+    {
+      mapInstitutions.map((i) => (
+        <a
+          href={i.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 focus:outline-none"
+          style={`left:${i.cx}%; top:${i.cy}%;`}
+        >
+          <span class="sr-only">{`${i.name}, ${i.city} (opens in a new tab)`}</span>
+
+          <span
+            class="flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 bg-white p-1.5 shadow-sm transition duration-150 group-hover:scale-110 group-hover:border-navy-300 group-hover:shadow-md group-focus-visible:ring-2 group-focus-visible:ring-navy-500 group-focus-visible:ring-offset-2 sm:h-14 sm:w-14 sm:p-2"
+            aria-hidden="true"
+          >
+            <img src={i.logo} alt="" loading="lazy" decoding="async" class="max-h-full max-w-full object-contain" />
+          </span>
+
+          {/* Tooltip — appears on hover and on keyboard focus */}
+          <span
+            class="pointer-events-none absolute left-1/2 top-full z-20 mt-2 w-max max-w-[13rem] -translate-x-1/2 rounded-lg bg-navy-900 px-3 py-2 text-center opacity-0 shadow-lg transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100"
+            aria-hidden="true"
+          >
+            <span class="block text-xs font-semibold leading-snug text-white">{i.name}</span>
+            <span class="mt-0.5 block text-[11px] text-navy-200">{i.city}</span>
+          </span>
+        </a>
+      ))
+    }
+  </div>
+
+  {/* Text equivalent — the map is decorative for anyone who can't use it */}
+  <ul class="mt-8 flex flex-wrap justify-center gap-2">
+    {
+      mapInstitutions.map((i) => (
+        <li>
+          <a
+            href={i.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block rounded-full border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-600 transition-colors hover:border-navy-300 hover:bg-navy-50 hover:text-navy-700"
+          >
+            {i.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

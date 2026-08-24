@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Section from "../components/Section.astro";
+import PersonCard from "../components/PersonCard.astro";
+import leadership from "../data/leadership.json";
+---
+
+<BaseLayout
+  title="Leadership"
+  description="The officers and organizing committee of the KSEA Upstate New York chapter."
+>
+  <PageHeader
+    eyebrow="Leadership"
+    title={`Chapter leadership, ${leadership.termLabel}`}
+    lead="The chapter is run entirely by volunteers who hold full-time academic and industry positions across the region."
+  />
+
+  <Section>
+    {leadership.note && <p class="mb-8 max-w-2xl rounded-lg border-l-4 border-clay-400 bg-slate-50 px-5 py-4 text-sm text-slate-600">{leadership.note}</p>}
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        leadership.officers.map((p) => (
+          <PersonCard name={p.name} role={p.role} institution={p.institution} photo={p.photo || undefined} linkedin={p.linkedin || undefined} />
+        ))
+      }
+    </div>
+  </Section>
+
+  {
+    leadership.hqSupport.length > 0 && (
+      <Section tone="tint" title="KSEA Headquarters support" lead="Staff at KSEA national who support the chapter's events and communications.">
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {leadership.hqSupport.map((p) => (
+            <PersonCard name={p.name} role={p.role} institution={p.institution} />
+          ))}
+        </div>
+      </Section>
+    )
+  }
+
+  {
+    leadership.past.length > 0 && (
+      <Section title="Past leadership">
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {leadership.past.map((p: any) => (
+            <PersonCard name={p.name} role={p.role} institution={p.institution} />
+          ))}
+        </div>
+      </Section>
+    )
+  }
+
+  <Section tone="tint">
+    <div class="rounded-xl border border-slate-200 bg-white p-8">
+      <h2 class="font-display text-xl font-bold text-navy-900">Want to help run the chapter?</h2>
+      <p class="mt-2 max-w-2xl text-slate-600">
+        The chapter needs volunteers at every institution in the region — organizing a seminar, running a campus YG
+        group, or helping with the annual symposium. Roles are as large or small as your schedule allows.
+      </p>
+      <a
+        href="/contact"
+        class="mt-5 inline-block rounded-lg bg-navy-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-navy-800"
+        >Volunteer</a
+      >
+    </div>
+  </Section>
+</BaseLayout>

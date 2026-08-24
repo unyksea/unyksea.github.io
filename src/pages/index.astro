@@ -1,0 +1,149 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import EventCard from "../components/EventCard.astro";
+import { getCollection } from "astro:content";
+import InstitutionMap from "../components/InstitutionMap.astro";
+import { site, chapterStats, nationalLinks } from "../data/site";
+
+const events = await getCollection("events");
+const featured = events
+  .filter((e) => e.data.status !== "past")
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+const recentPast = events
+  .filter((e) => e.data.status === "past")
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 2);
+const shown = [...featured, ...recentPast].slice(0, 2);
+---
+
+<BaseLayout description={site.description}>
+  <section class="relative overflow-hidden bg-navy-900">
+    <div
+      class="pointer-events-none absolute inset-0 opacity-20"
+      style="background-image: radial-gradient(circle at 20% 20%, #2c56a6 0, transparent 45%), radial-gradient(circle at 80% 70%, #c46f31 0, transparent 40%);"
+      aria-hidden="true"
+    >
+    </div>
+    <div class="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-navy-300">
+        Korean-American Scientists and Engineers Association
+      </p>
+      <h1 class="mt-4 max-w-3xl font-display text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
+        The Upstate New York chapter of KSEA
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-navy-100">
+        We connect Korean-American scientists, engineers, and students across Upstate New York — from Buffalo to the
+        Capital Region — through symposia, mentoring, and a professional network that spans academia and industry.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href="/membership"
+          class="rounded-lg bg-white px-5 py-3 text-sm font-semibold text-navy-800 transition-colors hover:bg-navy-50"
+          >Join the chapter</a
+        >
+        <a
+          href="/events"
+          class="rounded-lg border border-navy-400 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-navy-800"
+          >See our events</a
+        >
+      </div>
+
+      <dl class="mt-14 grid max-w-2xl grid-cols-2 gap-6 border-t border-navy-800 pt-8 sm:grid-cols-3">
+        <div>
+          <dt class="text-xs uppercase tracking-wider text-navy-300">Members</dt>
+          <dd class="mt-1 font-display text-3xl font-bold text-white">{chapterStats.totalMembers}</dd>
+        </div>
+        <div>
+          <dt class="text-xs uppercase tracking-wider text-navy-300">Institutions</dt>
+          <dd class="mt-1 font-display text-3xl font-bold text-white">{chapterStats.institutions}</dd>
+        </div>
+        <div>
+          <dt class="text-xs uppercase tracking-wider text-navy-300">Events in 2025–26</dt>
+          <dd class="mt-1 font-display text-3xl font-bold text-white">{chapterStats.events2526}</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <Section title="Events" lead="Our annual regional symposium, plus seminars and networking throughout the year.">
+    <div class="grid gap-6 sm:grid-cols-2">
+      {
+        shown.map((e) => (
+          <EventCard
+            href={`/events/${e.id}`}
+            title={e.data.title}
+            date={e.data.date}
+            location={e.data.location}
+            summary={e.data.summary}
+            status={e.data.status}
+            image={e.data.images[0]}
+          />
+        ))
+      }
+    </div>
+    <p class="mt-6">
+      <a href="/events" class="text-sm font-semibold text-navy-600 hover:underline">All events and archive →</a>
+    </p>
+  </Section>
+
+  <Section tone="tint" title="What the chapter does">
+    <div class="grid gap-6 md:grid-cols-3">
+      <div class="rounded-xl border border-slate-200 bg-white p-6">
+        <h3 class="font-display text-lg font-bold text-navy-900">Regional symposium</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">
+          An annual gathering that brings the region's Korean-American STEM community into one room for keynotes,
+          student talks, and a panel on careers.
+        </p>
+      </div>
+      <div class="rounded-xl border border-slate-200 bg-white p-6">
+        <h3 class="font-display text-lg font-bold text-navy-900">Mentoring and early career</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">
+          Connecting graduate students and postdocs with faculty and industry mentors through KSEA's SEED and KATALYST
+          programs.
+        </p>
+      </div>
+      <div class="rounded-xl border border-slate-200 bg-white p-6">
+        <h3 class="font-display text-lg font-bold text-navy-900">Outreach to students</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">
+          Supporting the National Math and Science Competition and scholarship programs for Korean-American students in
+          the region.
+        </p>
+      </div>
+    </div>
+    <p class="mt-6">
+      <a href="/programs" class="text-sm font-semibold text-navy-600 hover:underline">More about our programs →</a>
+    </p>
+  </Section>
+
+  <Section
+    tone="tint"
+    title="Where our members are"
+    lead="Chapter members work and study across Upstate New York. Hover or tap a campus to see which institution it is."
+  >
+    <InstitutionMap />
+  </Section>
+
+  <section class="bg-navy-800">
+    <div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-14 sm:px-6 md:flex-row md:items-center md:justify-between">
+      <div>
+        <h2 class="font-display text-2xl font-bold text-white">Not a member yet?</h2>
+        <p class="mt-2 max-w-xl text-navy-100">
+          Undergraduate membership is free, and student dues are $15 a year. Membership is handled by KSEA national — the
+          chapter is where you actually meet people.
+        </p>
+      </div>
+      <div class="flex shrink-0 gap-3">
+        <a
+          href="/membership"
+          class="rounded-lg bg-white px-5 py-3 text-sm font-semibold text-navy-800 hover:bg-navy-50">How to join</a
+        >
+        <a
+          href={nationalLinks.home}
+          class="rounded-lg border border-navy-400 px-5 py-3 text-sm font-semibold text-white hover:bg-navy-700"
+          >KSEA national</a
+        >
+      </div>
+    </div>
+  </section>
+</BaseLayout>

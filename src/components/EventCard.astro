@@ -1,0 +1,56 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  date: Date;
+  location?: string;
+  summary?: string;
+  status: "upcoming" | "past" | "tba";
+  image?: { src: string; alt: string };
+}
+const { href, title, date, location, summary, status, image } = Astro.props;
+
+const dateLabel =
+  status === "tba"
+    ? `${date.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" })} (tentative)`
+    : date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
+
+const badge = {
+  upcoming: { text: "Upcoming", class: "bg-clay-500 text-white" },
+  tba: { text: "Planned", class: "bg-navy-100 text-navy-700" },
+  past: { text: "Archive", class: "bg-slate-200 text-slate-700" },
+}[status];
+---
+
+<article
+  class="group relative flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white transition-shadow hover:shadow-md"
+>
+  {
+    image && (
+      <img
+        src={image.src}
+        alt={image.alt}
+        loading="lazy"
+        decoding="async"
+        class="h-44 w-full border-b border-slate-200 object-cover"
+      />
+    )
+  }
+  <div class="flex flex-1 flex-col p-6">
+  <div class="flex items-center gap-3">
+    <span class:list={["rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide", badge.class]}>
+      {badge.text}
+    </span>
+    <time datetime={date.toISOString()} class="text-sm text-slate-500">{dateLabel}</time>
+  </div>
+
+  <h3 class="mt-3 font-display text-xl font-bold text-navy-900">
+    <a href={href} class="after:absolute after:inset-0 group-hover:text-navy-600">{title}</a>
+  </h3>
+
+  {location && <p class="mt-1 text-sm font-medium text-slate-500">{location}</p>}
+  {summary && <p class="mt-3 flex-1 text-sm leading-relaxed text-slate-600">{summary}</p>}
+
+  <span class="mt-4 text-sm font-semibold text-navy-600">Read more →</span>
+  </div>
+</article>

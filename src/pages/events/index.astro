@@ -1,0 +1,117 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import Section from "../../components/Section.astro";
+import EventCard from "../../components/EventCard.astro";
+import AnnualPlanTable from "../../components/AnnualPlanTable.astro";
+import { getCollection } from "astro:content";
+import { annualPlan } from "../../data/site";
+
+const events = await getCollection("events");
+const byDateDesc = (a: any, b: any) => b.data.date.getTime() - a.data.date.getTime();
+
+const planned = events
+  .filter((e) => e.data.status !== "past")
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+const next = planned.slice(0, 2);
+
+const pastSymposia = events.filter((e) => e.data.status === "past" && e.data.kind === "symposium").sort(byDateDesc);
+const pastTalks = events.filter((e) => e.data.status === "past" && e.data.kind !== "symposium").sort(byDateDesc);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
+---
+
+<BaseLayout
+  title="Events"
+  description="The KSEA Upstate New York chapter's 2026–2027 annual plan, plus the full archive of past symposia, seminars, and meetings."
+>
+  <PageHeader
+    eyebrow="Events"
+    title={`The ${annualPlan.year} program`}
+    lead="Two welcoming socials, four technical seminars, a year-end forum, the annual symposium, and a town hall — spread across the region so no one has to drive four hours for every event."
+  />
+
+  <Section title={`What we're aiming for in ${annualPlan.year}`}>
+    <div class="grid gap-5 sm:grid-cols-2">
+      {
+        annualPlan.goals.map((g, i) => (
+          <div class="rounded-xl border border-slate-200 bg-white p-6">
+            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-clay-500 font-display text-sm font-bold text-white">
+              {i + 1}
+            </span>
+            <h3 class="mt-4 font-display text-lg font-bold text-navy-900">{g.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">{g.body}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <h3 class="mt-12 font-display text-xl font-bold text-navy-900">The year at a glance</h3>
+    <div class="mt-4">
+      <AnnualPlanTable events={planned} />
+    </div>
+    <p class="mt-4 max-w-3xl text-sm text-slate-500">{annualPlan.note}</p>
+  </Section>
+
+  <Section tone="tint" title="Next up">
+    <div class="grid gap-6 sm:grid-cols-2">
+      {
+        next.map((e) => (
+          <EventCard
+            href={`/events/${e.id}`}
+            title={e.data.title}
+            date={e.data.date}
+            location={e.data.location}
+            summary={e.data.summary}
+            status={e.data.status}
+            image={e.data.images[0]}
+          />
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section title="Past symposia" lead="Our regional gatherings, kept as a permanent record.">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        pastSymposia.map((e) => (
+          <EventCard
+            href={`/events/${e.id}`}
+            title={e.data.title}
+            date={e.data.date}
+            location={e.data.location}
+            summary={e.data.summary}
+            status={e.data.status}
+            image={e.data.images[0]}
+          />
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section tone="tint" title="Past seminars and meetings">
+    <ul class="divide-y divide-slate-200 border-y border-slate-200">
+      {
+        pastTalks.map((e) => (
+          <li>
+            <a href={`/events/${e.id}`} class="group flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:gap-6">
+              <time
+                datetime={e.data.date.toISOString()}
+                class="w-32 shrink-0 text-sm font-medium tabular-nums text-slate-500"
+              >
+                {fmt(e.data.date)}
+              </time>
+              <div class="min-w-0 flex-1">
+                <p class="font-semibold text-navy-900 group-hover:text-navy-600">{e.data.title}</p>
+                {e.data.speaker && <p class="mt-0.5 text-sm text-clay-600">{e.data.speaker}</p>}
+                <p class="mt-1 text-sm text-slate-600">{e.data.summary}</p>
+                {e.data.location && <p class="mt-1 text-xs text-slate-400">{e.data.location}</p>}
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+</BaseLayout>

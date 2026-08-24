@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-50: #eef3fb;
+  --color-navy-100: #d6e2f5;
+  --color-navy-200: #adc5ea;
+  --color-navy-300: #7ba0da;
+  --color-navy-400: #4a76c4;
+  --color-navy-500: #2c56a6;
+  --color-navy-600: #1f4288;
+  --color-navy-700: #17346c;
+  --color-navy-800: #112750;
+  --color-navy-900: #0b1a37;
+
+  --color-clay-400: #d98a4e;
+  --color-clay-500: #c46f31;
+  --color-clay-600: #a35723;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Source Serif 4", ui-serif, Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-wrap: pretty;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+/* Long-form markdown bodies (event archive pages) */
+.prose-chapter :where(h2) {
+  @apply font-display text-2xl text-navy-800 mt-10 mb-3;
+}
+.prose-chapter :where(h3) {
+  @apply font-semibold text-lg text-navy-800 mt-7 mb-2;
+}
+.prose-chapter :where(p) {
+  @apply text-slate-700 leading-relaxed my-4;
+}
+.prose-chapter :where(ul) {
+  @apply list-disc pl-6 my-4 space-y-1.5 text-slate-700;
+}
+.prose-chapter :where(ol) {
+  @apply list-decimal pl-6 my-4 space-y-1.5 text-slate-700;
+}
+.prose-chapter :where(a) {
+  @apply text-navy-600 underline underline-offset-2 hover:text-navy-800;
+}
+.prose-chapter :where(strong) {
+  @apply font-semibold text-navy-900;
+}
+.prose-chapter :where(table) {
+  @apply w-full text-left text-sm my-6 border-collapse;
+}
+.prose-chapter :where(th) {
+  @apply bg-navy-50 text-navy-800 font-semibold px-3 py-2 border-b border-navy-100 align-top;
+}
+.prose-chapter :where(td) {
+  @apply px-3 py-2 border-b border-slate-100 text-slate-700 align-top;
+}
+.prose-chapter :where(blockquote) {
+  @apply border-l-4 border-clay-400 pl-4 italic text-slate-600 my-6;
+}
+.prose-chapter :where(hr) {
+  @apply my-10 border-slate-200;
+}

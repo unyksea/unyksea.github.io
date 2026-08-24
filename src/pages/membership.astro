@@ -1,0 +1,171 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Section from "../components/Section.astro";
+import MembershipChart from "../components/MembershipChart.astro";
+import { site, nationalLinks, chapterStats } from "../data/site";
+
+const dues = [
+  { type: "Undergraduate student", fee: "Free", note: "No dues at any level" },
+  { type: "Graduate student / PhD / Postdoc", fee: "$15 / year", note: "Full member benefits" },
+  { type: "Regular member", fee: "$35 / year", note: "Professionals and faculty" },
+  { type: "International member", fee: "$35 / year", note: "Members based outside the U.S." },
+  { type: "Honorary / Distinguished Service", fee: "Free", note: "By KSEA designation" },
+];
+
+/* TODO: replace with the chapter's own Google Form embed URL before launch. */
+const mailingListForm = "";
+---
+
+<BaseLayout
+  title="Membership"
+  description="How to join KSEA and the Upstate New York chapter — dues, benefits, and the sign-up process."
+>
+  <PageHeader
+    eyebrow="Membership"
+    title="Join the chapter"
+    lead="Membership is administered by KSEA national. Once you are a member, you select Upstate NY as your local chapter — and that is what puts you on our list for events and mentoring."
+  />
+
+  <Section title="How to join">
+    <ol class="grid gap-6 md:grid-cols-3">
+      <li class="rounded-xl border border-slate-200 bg-white p-6">
+        <span
+          class="flex h-8 w-8 items-center justify-center rounded-full bg-navy-700 font-display text-sm font-bold text-white"
+          >1</span
+        >
+        <h3 class="mt-4 font-display text-lg font-bold text-navy-900">Register with KSEA national</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">
+          Create an account on ksea.org and pay the annual dues for your membership type. Undergraduates pay nothing.
+        </p>
+        <a href={nationalLinks.join} class="mt-3 inline-block text-sm font-semibold text-navy-600 hover:underline"
+          >Register →</a
+        >
+      </li>
+      <li class="rounded-xl border border-slate-200 bg-white p-6">
+        <span
+          class="flex h-8 w-8 items-center justify-center rounded-full bg-navy-700 font-display text-sm font-bold text-white"
+          >2</span
+        >
+        <h3 class="mt-4 font-display text-lg font-bold text-navy-900">Select “Upstate NY” as your chapter</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">
+          In your KSEA profile, set your local chapter to Upstate NY. This is the step that connects you to us — it is
+          easy to miss.
+        </p>
+      </li>
+      <li class="rounded-xl border border-slate-200 bg-white p-6">
+        <span
+          class="flex h-8 w-8 items-center justify-center rounded-full bg-navy-700 font-display text-sm font-bold text-white"
+          >3</span
+        >
+        <h3 class="mt-4 font-display text-lg font-bold text-navy-900">Say hello</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">
+          Email the chapter so we know which institution you are at and what you would like to get out of it.
+        </p>
+        <a href="/contact" class="mt-3 inline-block text-sm font-semibold text-navy-600 hover:underline">Contact us →</a>
+      </li>
+    </ol>
+  </Section>
+
+  <Section tone="tint" title="Annual dues" lead="Set by KSEA national. Paid once a year at registration or renewal.">
+    <div class="overflow-x-auto">
+      <table class="w-full min-w-[32rem] border-collapse text-left text-sm">
+        <thead>
+          <tr class="border-b border-slate-300">
+            <th class="py-3 pr-4 font-semibold text-navy-800">Membership type</th>
+            <th class="py-3 pr-4 font-semibold text-navy-800">Annual dues</th>
+            <th class="py-3 font-semibold text-navy-800"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            dues.map((d) => (
+              <tr class="border-b border-slate-200">
+                <td class="py-3 pr-4 font-medium text-slate-800">{d.type}</td>
+                <td class="py-3 pr-4 font-semibold text-navy-700">{d.fee}</td>
+                <td class="py-3 text-slate-500">{d.note}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-4 text-sm text-slate-500">
+      Fees are set by KSEA national and may change — <a href={nationalLinks.join} class="text-navy-600 hover:underline"
+        >confirm current rates on ksea.org</a
+      >.
+    </p>
+  </Section>
+
+  <Section title="What membership gets you">
+    <div class="grid gap-6 md:grid-cols-2">
+      <div class="rounded-xl border border-slate-200 p-6">
+        <h3 class="font-display text-lg font-bold text-navy-900">Locally, in Upstate NY</h3>
+        <ul class="mt-3 space-y-2 text-sm text-slate-600">
+          <li>Invitations to the annual regional symposium</li>
+          <li>A network across seven-plus research institutions in the region</li>
+          <li>Mentoring connections for students and postdocs</li>
+          <li>Seminars and informal gatherings through the year</li>
+        </ul>
+      </div>
+      <div class="rounded-xl border border-slate-200 p-6">
+        <h3 class="font-display text-lg font-bold text-navy-900">Nationally, through KSEA</h3>
+        <ul class="mt-3 space-y-2 text-sm text-slate-600">
+          <li>14 Technical Groups and 10 Standing Committees</li>
+          <li>The annual UKC conference and regional conferences</li>
+          <li>Scholarships and the National Math and Science Competition</li>
+          <li>Job referrals, career development, and leadership opportunities</li>
+        </ul>
+      </div>
+    </div>
+  </Section>
+
+  <Section
+    title="Who is in the chapter"
+    lead={`Membership by member type as of ${chapterStats.asOf}, from the 2025–2026 annual report.`}
+  >
+    <MembershipChart />
+    <div class="mt-8 grid gap-4 sm:grid-cols-3">
+      <div class="rounded-xl border border-slate-200 p-5">
+        <p class="text-xs uppercase tracking-wider text-slate-500">Paid members</p>
+        <p class="mt-1 font-display text-2xl font-bold text-navy-900">
+          {chapterStats.paidMembersPrior} <span class="text-slate-400">→</span> {chapterStats.paidMembers}
+        </p>
+        <p class="mt-1 text-xs text-slate-500">August 2025 to May 2026</p>
+      </div>
+      <div class="rounded-xl border border-slate-200 p-5">
+        <p class="text-xs uppercase tracking-wider text-slate-500">Institutions &amp; employers</p>
+        <p class="mt-1 font-display text-2xl font-bold text-navy-900">{chapterStats.institutions}</p>
+        <p class="mt-1 text-xs text-slate-500">Across Upstate New York and beyond</p>
+      </div>
+      <div class="rounded-xl border border-slate-200 p-5">
+        <p class="text-xs uppercase tracking-wider text-slate-500">Events held in 2025–26</p>
+        <p class="mt-1 font-display text-2xl font-bold text-navy-900">{chapterStats.events2526}</p>
+        <p class="mt-1 text-xs text-slate-500">Symposia, seminars, and the town hall</p>
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="tint" title="Chapter mailing list" lead="Not ready to join yet? Get event announcements only.">
+    {
+      mailingListForm ? (
+        <iframe
+          src={mailingListForm}
+          title="Chapter mailing list sign-up"
+          class="h-[720px] w-full rounded-xl border border-slate-200 bg-white"
+          loading="lazy"
+        />
+      ) : (
+        <div class="rounded-xl border border-dashed border-slate-300 bg-white p-8">
+          <p class="text-slate-600">
+            The sign-up form is being set up. In the meantime, email{" "}
+            <a href={`mailto:${site.email}`} class="font-semibold text-navy-600 hover:underline">
+              {site.email}
+            </a>{" "}
+            with the subject “mailing list” and we will add you.
+          </p>
+        </div>
+      )
+    }
+  </Section>
+</BaseLayout>

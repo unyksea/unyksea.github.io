@@ -1,0 +1,101 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Section from "../components/Section.astro";
+import { site, nationalLinks } from "../data/site";
+
+/* TODO: replace with the chapter's own Google Form embed URL before launch. */
+const contactForm = "";
+
+const siblings = [
+  { name: "KSEA National", href: "https://www.ksea.org/" },
+  { name: "New York Metropolitan Chapter", href: "https://kseany.org/" },
+  { name: "Seattle Chapter", href: "https://seattle.ksea.org/" },
+  { name: "Austin Chapter", href: "https://austin.ksea.org/" },
+  { name: "North Texas Chapter", href: "https://nt.ksea.org/" },
+  { name: "Southern California Chapter", href: "https://www.kseasc.org/" },
+];
+---
+
+<BaseLayout title="Contact" description="Get in touch with the KSEA Upstate New York chapter.">
+  <PageHeader
+    eyebrow="Contact"
+    title="Get in touch"
+    lead="Questions about membership, an idea for an event, or an offer to help organize — all welcome."
+  />
+
+  <Section>
+    <div class="grid gap-10 lg:grid-cols-3">
+      <div class="lg:col-span-2">
+        {
+          contactForm ? (
+            <iframe
+              src={contactForm}
+              title="Contact the chapter"
+              class="h-[820px] w-full rounded-xl border border-slate-200 bg-white"
+              loading="lazy"
+            />
+          ) : (
+            <div class="rounded-xl border border-slate-200 bg-slate-50 p-8">
+              <h2 class="font-display text-xl font-bold text-navy-900">Email the chapter</h2>
+              <p class="mt-3 text-slate-600">
+                The quickest way to reach us is email. Tell us your institution and what you are interested in, and an
+                officer will get back to you.
+              </p>
+              <a
+                href={`mailto:${site.email}`}
+                class="mt-5 inline-block rounded-lg bg-navy-700 px-5 py-3 text-sm font-semibold text-white hover:bg-navy-800"
+              >
+                {site.email}
+              </a>
+            </div>
+          )
+        }
+      </div>
+
+      <aside class="space-y-6">
+        <div class="rounded-xl border border-slate-200 p-6">
+          <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-500">Common questions</h2>
+          <dl class="mt-4 space-y-4 text-sm">
+            <div>
+              <dt class="font-semibold text-navy-900">How do I join?</dt>
+              <dd class="mt-1 text-slate-600">
+                Register with KSEA national and set Upstate NY as your chapter — <a
+                  href="/membership"
+                  class="text-navy-600 hover:underline">full steps here</a
+                >.
+              </dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-navy-900">When is the next symposium?</dt>
+              <dd class="mt-1 text-slate-600">
+                Planning is underway — see the <a href="/events" class="text-navy-600 hover:underline">events page</a>.
+              </dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-navy-900">Can I present my research?</dt>
+              <dd class="mt-1 text-slate-600">
+                Yes — students and postdocs are actively encouraged to give lightning talks. Email us.
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="rounded-xl border border-slate-200 p-6">
+          <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-500">Elsewhere in KSEA</h2>
+          <ul class="mt-4 space-y-2 text-sm">
+            {
+              siblings.map((s) => (
+                <li>
+                  <a href={s.href} class="text-navy-600 hover:underline">
+                    {s.name}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </Section>
+</BaseLayout>

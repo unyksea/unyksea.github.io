@@ -1,0 +1,144 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Section from "../components/Section.astro";
+import { chapterStats, institutions, nationalLinks } from "../data/site";
+
+const growth = chapterStats.paidMembers - chapterStats.paidMembersPrior;
+---
+
+<BaseLayout
+  title="About"
+  description="The Upstate New York chapter of KSEA — reactivated in 2025 after two decades, serving Korean-American scientists and engineers across the region."
+>
+  <PageHeader
+    eyebrow="About"
+    title="A regional chapter, rebuilt"
+    lead="KSEA Upstate New York serves Korean-American scientists, engineers, and students across a region where the community is spread thin — and where, until recently, there was nowhere to gather."
+  />
+
+  <Section>
+    <div class="grid gap-12 lg:grid-cols-3">
+      <div class="lg:col-span-2">
+        <h2 class="font-display text-2xl font-bold text-navy-900">The chapter</h2>
+        <p class="mt-4 leading-relaxed text-slate-700">
+          Upstate New York holds a dense concentration of research universities, medical centers, and technical
+          industry — but its Korean-American STEM community is distributed across hundreds of miles. Cornell, RIT,
+          Rochester, Binghamton, Buffalo, RPI, and Syracuse each host a handful of researchers who otherwise have little
+          reason to cross paths.
+        </p>
+        <p class="mt-4 leading-relaxed text-slate-700">
+          In April 2025 the chapter held a symposium at the Rochester Institute of Technology — the first KSEA event in
+          this region in over twenty years. What followed was a full program year: a fall symposium at Cornell, a spring
+          symposium at the University of Rochester Medical Center, a seminar series running from polymer physics to
+          immigration law, and an annual town hall in Syracuse.
+        </p>
+        <p class="mt-4 leading-relaxed text-slate-700">
+          That activity showed up in the membership. Paid membership went from <strong class="text-navy-900"
+            >{chapterStats.paidMembersPrior} in August 2025 to {chapterStats.paidMembers}</strong
+          > by the end of the year — an increase of {growth} — against a total roster of {chapterStats.totalMembers} across
+          {chapterStats.institutions} institutions and employers.
+        </p>
+
+        <h2 class="mt-12 font-display text-2xl font-bold text-navy-900">What we do</h2>
+        <ul class="mt-4 space-y-3 text-slate-700">
+          <li class="flex gap-3">
+            <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-clay-500"></span>
+            <span
+              ><strong class="text-navy-900">Convene.</strong> Fall and spring symposia with invited talks, trainee research
+              presentations, student posters, and career panels.</span
+            >
+          </li>
+          <li class="flex gap-3">
+            <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-clay-500"></span>
+            <span
+              ><strong class="text-navy-900">Run a seminar series.</strong> Regular talks by chapter members on their own
+              research — plus practical sessions on the things researchers actually need, like visa and green card processes.</span
+            >
+          </li>
+          <li class="flex gap-3">
+            <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-clay-500"></span>
+            <span
+              ><strong class="text-navy-900">Mentor.</strong> Connect students and early-career researchers to faculty and
+              industry professionals, locally and through KSEA's national programs.</span
+            >
+          </li>
+          <li class="flex gap-3">
+            <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-clay-500"></span>
+            <span
+              ><strong class="text-navy-900">Govern openly.</strong> An annual town hall where members review the year, set
+              direction, and elect the incoming committee.</span
+            >
+          </li>
+        </ul>
+      </div>
+
+      <aside class="lg:col-span-1">
+        <div class="rounded-xl border border-slate-200 bg-slate-50 p-6">
+          <h2 class="font-display text-lg font-bold text-navy-900">About KSEA</h2>
+          <p class="mt-3 text-sm leading-relaxed text-slate-700">
+            The Korean-American Scientists and Engineers Association was established in 1971 as a non-profit
+            professional organization. It has grown to over 6,000 registered members, roughly 70 local chapters and
+            branches, and 13 technical groups across the United States.
+          </p>
+          <dl class="mt-5 space-y-3 text-sm">
+            <div>
+              <dt class="font-semibold text-navy-800">Vision</dt>
+              <dd class="text-slate-600">
+                Promote applications of science and technology for the benefit of society, foster U.S.–Korea
+                cooperation, and help Korean-American scientists and engineers reach their career goals.
+              </dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-navy-800">Headquarters</dt>
+              <dd class="text-slate-600">Vienna, Virginia (Washington, DC area)</dd>
+            </div>
+          </dl>
+          <a href={nationalLinks.home} class="mt-5 inline-block text-sm font-semibold text-navy-600 hover:underline"
+            >Visit ksea.org →</a
+          >
+        </div>
+
+        <div class="mt-6 rounded-xl border border-slate-200 p-6">
+          <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-500">Chapter at a glance</h2>
+          <dl class="mt-4 space-y-3 text-sm">
+            <div class="flex justify-between gap-4">
+              <dt class="text-slate-600">Total members</dt>
+              <dd class="font-semibold text-navy-900">{chapterStats.totalMembers}</dd>
+            </div>
+            <div class="flex justify-between gap-4">
+              <dt class="text-slate-600">Paid members</dt>
+              <dd class="font-semibold text-navy-900">{chapterStats.paidMembers}</dd>
+            </div>
+            <div class="flex justify-between gap-4">
+              <dt class="text-slate-600">Institutions &amp; employers</dt>
+              <dd class="font-semibold text-navy-900">{chapterStats.institutions}</dd>
+            </div>
+            <div class="flex justify-between gap-4">
+              <dt class="text-slate-600">Events in 2025–26</dt>
+              <dd class="font-semibold text-navy-900">{chapterStats.events2526}</dd>
+            </div>
+          </dl>
+          <p class="mt-4 text-xs text-slate-500">As of {chapterStats.asOf}.</p>
+        </div>
+      </aside>
+    </div>
+  </Section>
+
+  <Section
+    tone="tint"
+    title="Where our members are"
+    lead={`Institutions and employers represented in the chapter, as of ${chapterStats.asOf}.`}
+  >
+    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        institutions.map((i) => (
+          <div class="rounded-lg border border-slate-200 bg-white px-4 py-3">
+              <p class="text-sm font-semibold text-navy-900">{i.name}</p>
+              <p class="text-xs text-slate-500">{i.city}</p>
+            </div>
+        ))
+      }
+    </div>
+  </Section>
+</BaseLayout>
