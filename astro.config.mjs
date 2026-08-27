@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://unyc.ksea.org',
+  site: 'https://uny.ksea.org',
   integrations: [sitemap()],
   // The chapter previously ran on Google Sites at these paths. Printed flyers, QR
   // codes, and the 2025 symposium emails still point at them, so they must not 404.

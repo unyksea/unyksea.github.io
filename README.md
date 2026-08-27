@@ -1,7 +1,7 @@
 # KSEA Upstate New York — chapter website
 
 The website for the Upstate New York chapter of the Korean-American Scientists and
-Engineers Association. Live at **https://unyc.ksea.org**.
+Engineers Association. Live at **https://uny.ksea.org**.
 
 Built with [Astro](https://astro.build) and Tailwind CSS. It is a fully static site —
 there is no server, no database, and no hosting bill.
@@ -107,11 +107,11 @@ public/
 
 ## Domain and DNS
 
-`unyc.ksea.org` is a subdomain of `ksea.org`, so **KSEA Headquarters controls the DNS
+`uny.ksea.org` is a subdomain of `ksea.org`, so **KSEA Headquarters controls the DNS
 record** — the chapter cannot change it directly. It points here via:
 
 ```
-unyc.ksea.org.  CNAME  unyksea.github.io.
+uny.ksea.org.  CNAME  unyksea.github.io.
 ```
 
 If the site ever needs to move hosts, that record change has to be requested from the

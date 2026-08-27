@@ -2,7 +2,7 @@ export const site = {
   name: "KSEA Upstate New York Chapter",
   shortName: "KSEA Upstate NY",
   tagline: "Korean-American Scientists and Engineers Association",
-  url: "https://unyc.ksea.org",
+  url: "https://uny.ksea.org",
   email: "unyskorea@gmail.com",
   description:
     "The Upstate New York chapter of the Korean-American Scientists and Engineers Association — connecting Korean-American researchers, engineers, and students across Cornell, RIT, Rochester, Binghamton, Buffalo, RPI, and Syracuse.",
