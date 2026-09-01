@@ -189,3 +189,18 @@ include a participant list with attendees' full names, and group photos may incl
 people who did not expect to appear on a public website. Crop or leave out anything
 that publishes a name or face without consent — the immigration seminar photo in
 this repo is deliberately cropped for exactly this reason.
+
+### RSVP / registration links
+
+Add these to an event's frontmatter:
+
+```yaml
+registrationUrl: "https://forms.gle/..."
+registrationLabel: "RSVP for this event"   # optional; defaults to "Register"
+rsvpRequired: true                          # adds an "RSVP required" badge
+```
+
+`registrationUrl` puts a button on the event page and an **RSVP** button on the
+event's card wherever it appears (home page, events list). `rsvpRequired: true`
+additionally shows an "RSVP required" badge on the card — use it when you need a
+headcount for catering or seating, not for every event with a sign-up form.

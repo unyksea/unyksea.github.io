@@ -55,7 +55,7 @@ const dateLabel =
                   href={event.data.registrationUrl}
                   class="rounded-lg bg-navy-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-navy-800"
                 >
-                  Register
+                  {event.data.registrationLabel ?? "Register"}
                 </a>
               )}
               {event.data.bookletUrl && (

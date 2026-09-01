@@ -7,8 +7,10 @@ interface Props {
   summary?: string;
   status: "upcoming" | "past" | "tba";
   image?: { src: string; alt: string };
+  rsvpUrl?: string;
+  rsvpRequired?: boolean;
 }
-const { href, title, date, location, summary, status, image } = Astro.props;
+const { href, title, date, location, summary, status, image, rsvpUrl, rsvpRequired } = Astro.props;
 
 const dateLabel =
   status === "tba"
@@ -42,6 +44,13 @@ const badge = {
       {badge.text}
     </span>
     <time datetime={date.toISOString()} class="text-sm text-slate-500">{dateLabel}</time>
+    {
+      rsvpRequired && (
+        <span class="rounded-full bg-navy-50 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-navy-700">
+          RSVP required
+        </span>
+      )
+    }
   </div>
 
   <h3 class="mt-3 font-display text-xl font-bold text-navy-900">
@@ -51,6 +60,20 @@ const badge = {
   {location && <p class="mt-1 text-sm font-medium text-slate-500">{location}</p>}
   {summary && <p class="mt-3 flex-1 text-sm leading-relaxed text-slate-600">{summary}</p>}
 
-  <span class="mt-4 text-sm font-semibold text-navy-600">Read more →</span>
+  <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+    <span class="text-sm font-semibold text-navy-600">Read more →</span>
+    {
+      rsvpUrl && (
+        <a
+          href={rsvpUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="relative z-10 rounded-lg bg-clay-500 px-3.5 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-clay-600"
+        >
+          RSVP
+        </a>
+      )
+    }
+  </div>
   </div>
 </article>

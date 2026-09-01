@@ -78,6 +78,8 @@ const shown = [...featured, ...recentPast].slice(0, 2);
             summary={e.data.summary}
             status={e.data.status}
             image={e.data.images[0]}
+            rsvpUrl={e.data.registrationUrl}
+            rsvpRequired={e.data.rsvpRequired}
           />
         ))
       }

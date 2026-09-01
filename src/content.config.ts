@@ -25,6 +25,10 @@ const events = defineCollection({
       .default([]),
     bookletUrl: z.string().url().optional(),
     registrationUrl: z.string().url().optional(),
+    /** Button label for registrationUrl. Defaults to "Register". */
+    registrationLabel: z.string().optional(),
+    /** Set when attendance must be confirmed in advance (catering, seating). */
+    rsvpRequired: z.boolean().default(false),
   }),
 });
 
