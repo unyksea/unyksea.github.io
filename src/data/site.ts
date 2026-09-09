@@ -52,18 +52,6 @@ export const nationalLinks = {
   scholarships: "https://www.ksea.org/scholarship",
 };
 
-/** Membership by member type as of May 2026, from the 2025–2026 Annual Report.
- *  Aggregate counts only — the chapter does not publish an institution-level
- *  breakdown, and no member records live in this repo.
- *
- *  NOTE: the annual report's TOTAL row reads 9 / 22 / 37 / 71, but its own
- *  institution rows sum to 9 / 22 / 41 / 72. These are the row-derived figures,
- *  so every total on the site agrees with every other. */
-export const membershipByType = [
-  { label: "Undergraduate", count: 9, color: "#2a78d6" },
-  { label: "Graduate", count: 22, color: "#eb6834" },
-  { label: "Regular", count: 41, color: "#1baf7a" },
-];
 
 /** The chapter's stated goals for the 2026–2027 program year. */
 export const annualPlan = {

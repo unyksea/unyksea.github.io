@@ -2,12 +2,11 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHeader from "../components/PageHeader.astro";
 import Section from "../components/Section.astro";
-import MembershipChart from "../components/MembershipChart.astro";
-import { site, nationalLinks, chapterStats } from "../data/site";
+import { site, nationalLinks } from "../data/site";
 
 const dues = [
   { type: "Undergraduate student", fee: "Free", note: "No dues at any level" },
-  { type: "Graduate student / PhD / Postdoc", fee: "$15 / year", note: "Full member benefits" },
+  { type: "Graduate student", fee: "$15 / year", note: "Full member benefits" },
   { type: "Regular member", fee: "$35 / year", note: "Professionals and faculty" },
   { type: "International member", fee: "$35 / year", note: "Members based outside the U.S." },
   { type: "Honorary / Distinguished Service", fee: "Free", note: "By KSEA designation" },
@@ -116,32 +115,6 @@ const mailingListForm = "";
           <li>Scholarships and the National Math and Science Competition</li>
           <li>Job referrals, career development, and leadership opportunities</li>
         </ul>
-      </div>
-    </div>
-  </Section>
-
-  <Section
-    title="Who is in the chapter"
-    lead={`Membership by member type as of ${chapterStats.asOf}, from the 2025–2026 annual report.`}
-  >
-    <MembershipChart />
-    <div class="mt-8 grid gap-4 sm:grid-cols-3">
-      <div class="rounded-xl border border-slate-200 p-5">
-        <p class="text-xs uppercase tracking-wider text-slate-500">Paid members</p>
-        <p class="mt-1 font-display text-2xl font-bold text-navy-900">
-          {chapterStats.paidMembersPrior} <span class="text-slate-400">→</span> {chapterStats.paidMembers}
-        </p>
-        <p class="mt-1 text-xs text-slate-500">August 2025 to May 2026</p>
-      </div>
-      <div class="rounded-xl border border-slate-200 p-5">
-        <p class="text-xs uppercase tracking-wider text-slate-500">Institutions &amp; employers</p>
-        <p class="mt-1 font-display text-2xl font-bold text-navy-900">{chapterStats.institutions}</p>
-        <p class="mt-1 text-xs text-slate-500">Across Upstate New York and beyond</p>
-      </div>
-      <div class="rounded-xl border border-slate-200 p-5">
-        <p class="text-xs uppercase tracking-wider text-slate-500">Events held in 2025–26</p>
-        <p class="mt-1 font-display text-2xl font-bold text-navy-900">{chapterStats.events2526}</p>
-        <p class="mt-1 text-xs text-slate-500">Symposia, seminars, and the town hall</p>
       </div>
     </div>
   </Section>
