@@ -8,6 +8,8 @@ const events = defineCollection({
     /** Event date. For a "tba" event, use a placeholder date in the target season. */
     date: z.coerce.date(),
     location: z.string().optional(),
+    /** Map link for the venue; makes the location in the header clickable. */
+    locationUrl: z.string().url().optional(),
     /** upcoming = confirmed and in the future; tba = planned, details pending; past = archived */
     status: z.enum(["upcoming", "tba", "past"]),
     /** Groups the archive. Symposia get cards; seminars and meetings get a compact list. */

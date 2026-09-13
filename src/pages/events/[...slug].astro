@@ -42,7 +42,20 @@ const dateLabel =
             event.data.location && (
               <div>
                 <dt class="text-xs uppercase tracking-wider text-slate-500">Location</dt>
-                <dd class="mt-0.5 font-medium text-navy-900">{event.data.location}</dd>
+                <dd class="mt-0.5 font-medium text-navy-900">
+                  {event.data.locationUrl ? (
+                    <a
+                      href={event.data.locationUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-navy-700 underline underline-offset-2 hover:text-navy-500"
+                    >
+                      {event.data.location}
+                    </a>
+                  ) : (
+                    event.data.location
+                  )}
+                </dd>
               </div>
             )
           }
