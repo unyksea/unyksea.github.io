@@ -1,11 +1,11 @@
 ---
-title: "Local Meeting — Western Hub"
+title: "Welcoming Social & Membership Drive — Western Hub"
 date: 2026-09-19
 location: "1140 Institute Hall, Rochester Institute of Technology"
 locationUrl: "https://maps.app.goo.gl/U7VdiqzfJsVHDakw5"
 status: "upcoming"
 kind: "meeting"
-summary: "The western counterpart to September's opening meeting, at RIT: an introduction to KSEA, introductions, and time to meet people across the region. RSVP requested by Wednesday, September 16."
+summary: "The western counterpart to September’s opening social, at RIT: an introduction to KSEA, introductions, and time to meet people across the region. RSVP requested by Wednesday, September 16."
 plannedAttendees: 20
 plannedBudget: 300
 registrationUrl: "https://forms.gle/3q3zjLFQ5kCsbgZK9"
@@ -15,9 +15,9 @@ rsvpRequired: true
 
 **Saturday, September 19, 2026 · 4:00 – 6:30 pm · 1140 Institute Hall, Rochester Institute of Technology**
 
-The second of the chapter's two September meetings, serving the **western hub** — RIT, the University of Rochester, and the University at Buffalo.
+The second of two welcoming socials that open the 2026–2027 program year, serving the **western hub** — RIT, the University of Rochester, and the University at Buffalo.
 
-Running the opening meeting twice, once per hub, is deliberate: Upstate New York is too large for a single gathering to serve everyone.
+Running the opening social twice, once per hub, is deliberate: Upstate New York is too large for a single social to serve everyone.
 
 ## RSVP by Wednesday, September 16
 
