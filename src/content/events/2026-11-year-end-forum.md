@@ -60,7 +60,7 @@ Three parallel groups — join the one for your career stage.
 | --- | --- | --- |
 | **Undergraduates & YGs** | Why Networking, Career Path and AI Impacts on Jobs | |
 | **Graduate students & postdocs** | Job Trends and Fellowship Writing 101 | Dr. Sungha Hong |
-| **Faculty** | Funding Trends, Korea–US Research Collaboration, Networking within KSEA | Dr. Tom Oh & Dr. Chul Bae |
+| **Faculty** | Funding Trends, Korea–US Research Collaboration, Networking within KSEA | Dr. Tom Oh & Dr. Chulsung Bae |
 
 ## Dinner
 
