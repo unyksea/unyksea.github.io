@@ -86,6 +86,7 @@ export const mapInstitutions = [
   { name: "Rochester Institute of Technology", short: "RIT", city: "Rochester, NY", logo: "/images/institutions/rit.png", href: "https://www.rit.edu/", x: 27.18, y: 43.22, cx: 34, cy: 40 },
   { name: "Syracuse University", short: "Syracuse", city: "Syracuse, NY", logo: "/images/institutions/syracuse.png", href: "https://www.syracuse.edu/", x: 47.34, y: 44.23, cx: 49, cy: 33 },
   { name: "Rensselaer Polytechnic Institute", short: "RPI", city: "Troy, NY", logo: "/images/institutions/rpi.png", href: "https://www.rpi.edu/", x: 79.4, y: 51.15, cx: 80, cy: 43 },
+  { name: "University at Albany", short: "UAlbany", city: "Albany, NY", logo: "/images/institutions/albany.png", href: "https://www.albany.edu/", x: 77.5, y: 52.1, cx: 76, cy: 63 },
   { name: "Cornell University", short: "Cornell", city: "Ithaca, NY", logo: "/images/institutions/cornell.png", href: "https://www.cornell.edu/", x: 42.93, y: 57.33, cx: 33, cy: 55 },
   { name: "Binghamton University", short: "Binghamton", city: "Binghamton, NY", logo: "/images/institutions/binghamton.png", href: "https://www.binghamton.edu/", x: 49.51, y: 65.48, cx: 59, cy: 56 },
 ];
