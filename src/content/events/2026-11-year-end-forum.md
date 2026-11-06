@@ -44,13 +44,13 @@ Syracuse is roughly central to the region, so the workshop brings the eastern an
 
 **MD, MPH · Psychiatry, University of Rochester Medical Center**
 
-On **mental health management in academic settings**. Talk title to be announced.
+On **mental health management in academic settings**.
 
 ### Dr. Sylvia Byun — 2:15 pm
 
 **Deputy Director, Quality Improvement & Performance Management Program, Bureau of Communicable Disease Control, New York State Department of Health**
 
-On **non-traditional career paths**. Talk title to be announced.
+On **non-traditional career paths**.
 
 ## Breakout sessions — 3:30 pm
 
@@ -58,13 +58,13 @@ Three parallel groups — join the one for your career stage.
 
 | For | Session | Led by |
 | --- | --- | --- |
-| **Undergraduates & YGs** | Why Networking, Career Path and AI Impacts on Jobs | |
+| **Undergraduates & YGs** | Why Networking, Career Path and AI Impacts on Jobs | Dr. Tom Oh |
 | **Graduate students & postdocs** | Job Trends and Fellowship Writing 101 | Dr. Sungha Hong |
-| **Faculty** | Funding Trends, Korea–US Research Collaboration, Networking within KSEA | Dr. Tom Oh & Dr. Chulsung Bae |
+| **Faculty** | Funding Trends, Korea–US Research Collaboration, Networking within KSEA | Dr. Chulsung Bae |
 
 ## Dinner
 
-A **networking dinner** follows from 5:00 pm — the best opportunity of the year to meet students, faculty and professionals from Cornell, RPI, RIT, SUNY Geneseo, Syracuse, the University at Buffalo, and the University of Rochester.
+A **networking dinner** follows from 5:00 pm — the best opportunity of the year to meet students, faculty and professionals from Cornell, RPI, RIT, SUNY Geneseo, Syracuse, the University at Albany, the University at Buffalo, and the University of Rochester.
 
 ---
 
